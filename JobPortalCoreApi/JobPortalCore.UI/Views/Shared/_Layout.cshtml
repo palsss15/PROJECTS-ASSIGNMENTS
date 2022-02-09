@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">JobPortalCore.UI</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online Job Portal System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="JobDetails" asp-action="Index">JobProfile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CandidateRegister" asp-action="Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CandidateRegister" asp-action="Login">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -46,3 +52,26 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+@*
+
+    bootstrap - to create responsive web designs
+     @media(width>400px and width<450px){
+      table{
+             width:400px;
+             Color:'red'
+         }
+     }
+    @media(width>700px and width<950px){
+      table{
+             width:700px;
+             Color:'blue'
+         }
+     }
+     @media(width>450px and width<700px){
+      table{
+             width:500px;
+             Color:'yellow'
+         }
+     }
+*@

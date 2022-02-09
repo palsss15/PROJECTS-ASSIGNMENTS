@@ -8,7 +8,7 @@ namespace JobPortalCore.BAL.services
 {
     public class JobDetailsService
     {
-        IJobDetailsRepository _jobRepository;
+        private IJobDetailsRepository _jobRepository;
         public JobDetailsService(IJobDetailsRepository jobRepository)
         {
             _jobRepository = jobRepository;
@@ -30,14 +30,14 @@ namespace JobPortalCore.BAL.services
             _jobRepository.DeleteJob(jobid);
         }
         //Get GetMovieByid
-        public void GetJobByid(int jobid)
+        public JobDetails GetJobByid(int jobid)
         {
-            _jobRepository.GetJobById(jobid);
+          return  _jobRepository.GetJobById(jobid);
         }
         //Get GetMovies
-        public void GetJob()
+        public IEnumerable<JobDetails> GetJobs()
         {
-            _jobRepository.GetJobs();
+           return _jobRepository.GetJobs();
         }
     }
 }

@@ -16,9 +16,11 @@ namespace JobPortalCore.DAL.Data
 
         }
 
-        public DbSet<JobDetails> job { get; set; }
+        public DbSet<CandidateLogin> candidateLogin { get; set; }
         public DbSet<CandidateRegister> candidateRegister { get; set; }
         public DbSet<EmployeeDetails> employeeDetails { get; set; }
+        public DbSet<JobDetails> jobs { get; set; }
+        
 
     }
 

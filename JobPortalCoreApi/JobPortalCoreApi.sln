@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortalCore.DAL", "JobPor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortalCore.Entity", "JobPortalCore.Entity\JobPortalCore.Entity.csproj", "{FF8DF5C6-A6B6-45E8-96E5-4B1076F1F72A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobPortalCore.UI", "JobPortalCore.UI\JobPortalCore.UI.csproj", "{11D15BE4-A4D4-40F8-8F7B-996631F9E67D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobPortalCore.UI", "JobPortalCore.UI\JobPortalCore.UI.csproj", "{11D15BE4-A4D4-40F8-8F7B-996631F9E67D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,7 +13,6 @@ namespace JobPortalCore.DAL.Repository
         void DeleteCandidateRegister(int CandidateId);
         CandidateRegister GetCandidateRegisterByID(int CandidateId);
         IEnumerable<Entity.Models.CandidateRegister> GetCandidateRegister();
-
         void Register(EmployeeDetails employeeDetails);
         EmployeeDetails Login(EmployeeDetails employee);
 

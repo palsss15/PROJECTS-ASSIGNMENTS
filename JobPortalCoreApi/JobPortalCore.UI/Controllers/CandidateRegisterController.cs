@@ -1,20 +1,20 @@
-﻿using JobPortalCore.Entity.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using JobPortalCore.Entity.Models;
 
 namespace JobPortalCore.UI.Controllers
 {
     public class CandidateRegisterController : Controller
     {
         private IConfiguration _configuration;
-        public CandidateRegsiterController(IConfiguration configuration)
+        public CandidateRegisterController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -33,13 +33,14 @@ namespace JobPortalCore.UI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(candidateRegister), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBaseUrl"] + "User/Register";
+                string endPoint = _configuration["WebApiBaseUrl"] + "CandidateRegister/Register";
                 using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         ViewBag.status = "Ok";
                         ViewBag.message = "Register successfully!";
+                        return Redirect("Login");
                     }
                     else
                     {
@@ -61,11 +62,14 @@ namespace JobPortalCore.UI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(candidateRegister), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBaseUrl"] + "Token/Login";
+                string endPoint = _configuration["WebApiBaseUrl"] + "CandidateRegister/Login";
                 using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                        return RedirectToAction("Index", "JobDetails");
+                    { 
+                        //Session["Firstname"] = candidateRegister;
+                        return RedirectToAction("Index", "Home");
+                    }
                     else
                     {
                         ViewBag.status = "Error";

@@ -1,0 +1,48 @@
+﻿
+@model IEnumerable<JobPortalCoreApi.Entity.Models.JobDetails>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="row">
+    <div class="col-12">
+        <h3>Movies</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Jobid</th>
+                    <th>Companyname</th>
+                    <th>Jobtitle</th>
+                    <th>Joblocation</th>
+                    <th>Technicalskills</th>
+                    <th>Qualifications</th>
+                    <th>ContactId</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var jobDetails in Model)
+                {
+                    
+                <tr>
+                    <td>@jobDetails.Jobid</td>
+                    <td>@jobDetails.Companyname</td>
+                    <td>@jobDetails.Jobtitle</td>
+                    <td>@jobDetails.Joblocation</td>
+                    <td>@jobDetails.Technicalskills</td>
+                    <td>@jobDetails.Qualifications</td>
+                    <td>@jobDetails.ContactId</td>
+                   
+                    <td><a asp-controller="JobDetails" asp-action="EditJob" asp-route-MovieId="@jobDetails.Jobid">Edit</a></td>
+                    <td><a asp-controller="JobDetails" asp-action="DeleteJob" asp-route-MovieId="@jobDetails.Jobid">Delete</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

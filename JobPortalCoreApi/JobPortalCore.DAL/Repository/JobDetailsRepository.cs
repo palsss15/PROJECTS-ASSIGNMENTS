@@ -18,25 +18,25 @@ namespace JobPortalCore.DAL.Repository
         }
         public void AddJob(JobDetails job)
         {
-            _jobDbContext.job.Add(job);
+            _jobDbContext.jobs.Add(job);
             _jobDbContext.SaveChanges();
         }
 
         public void DeleteJob(int jobid)
         {
-            var job = _jobDbContext.job.Find(jobid);
-            _jobDbContext.job.Remove(job);
+            var job = _jobDbContext.jobs.Find(jobid);
+            _jobDbContext.jobs.Remove(job);
             _jobDbContext.SaveChanges();
         }
 
         public JobDetails GetJobById(int jobid)
         {
-            return _jobDbContext.job.Find(jobid);
+            return _jobDbContext.jobs.Find(jobid);
         }
 
         public IEnumerable<JobDetails> GetJobs()
         {
-            return _jobDbContext.job.ToList();
+            return _jobDbContext.jobs.ToList();
         }
 
         public void UpdateJob(JobDetails job)

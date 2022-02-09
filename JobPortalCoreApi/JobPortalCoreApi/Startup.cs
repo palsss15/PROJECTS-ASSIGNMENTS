@@ -14,7 +14,9 @@ using System.Threading.Tasks;
 using JobPortalCore.DAL.Repository;
 using JobPortalCore.BAL.services;
 using JobPortalCore.BAL.Services;
-
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 namespace JobPortalCoreApi
 {
@@ -30,7 +32,7 @@ namespace JobPortalCoreApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionStr = Configuration.GetConnectionString("SqlConnection");
+            string connectionStr = Configuration.GetConnectionString("SqlConnection");
             services.AddDbContext<JobDbContext>(options => options.UseSqlServer(connectionStr));
             services.AddControllers();
             services.AddTransient<IJobDetailsRepository, JobDetailsRepository>();
@@ -39,6 +41,21 @@ namespace JobPortalCoreApi
             services.AddTransient<CandidateRegisterService, CandidateRegisterService>();
             services.AddTransient<IEmployeeDetailsRepository, EmployeeDetailsRepository>();
             services.AddTransient<EmployeeDetailsService, EmployeeDetailsService>();
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = Configuration["Jwt:Audience"],
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,9 +66,13 @@ namespace JobPortalCoreApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

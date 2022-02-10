@@ -90,24 +90,48 @@ namespace JobPortalCore.UI.Controllers
         }
 
         // GET: JobDetails/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            JobDetails jobDetails = null;
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:40275");
+                HttpResponseMessage httpResponse = await client.GetAsync("/api/JobDetails/" + id);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    var loanResponse = httpResponse.Content.ReadAsStringAsync().Result;
+                    jobDetails = JsonConvert.DeserializeObject<JobDetails>(loanResponse);
+                }
+            }
             return View();
+
         }
 
         // POST: JobDetails/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int id, IFormCollection collection)
         {
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("http://localhost:40275");
+                    HttpResponseMessage httpResponse = await client.DeleteAsync("/api/JobDetails/" + id);
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+
+
             }
             catch
             {
                 return View();
             }
+            return View();
         }
     }
 }

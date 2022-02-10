@@ -1,0 +1,51 @@
+﻿@model IEnumerable<JobPortalCore.Entity.Models.EmployeeDetails>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<div class="row">
+    <div class="col-12">
+        <h3>Employees</h3>
+        <hr />
+        <table class="table table-light table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ContactId</th>
+                    <th>EmpName</th>
+                    <th>EmailId</th>
+                    <th>ContactNum</th>
+                    <th>Address</th>
+                    <th>Location</th>
+                    <th>Password</th>
+                    <th>ConfirmPassword</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employeeDetails in Model)
+                {
+
+                <tr>
+                    <td>@employeeDetails.ContactId</td>
+                    <td>@employeeDetails.EmpName</td>
+                    <td>@employeeDetails.EmailId</td>
+                    <td>@employeeDetails.ContactNum</td>
+                    <td>@employeeDetails.Address</td>
+                    <td>@employeeDetails.Location</td>
+                    <td>@employeeDetails.Password</td>
+                    <td>@employeeDetails.ConfirmPassword</td>
+
+                    <td><a asp-controller="EmployeeDetails" asp-action="EditEmployee" asp-route-MovieId="@employeeDetails.ContactId">Edit</a></td>
+                    <td><a asp-controller="EmployeeDetails" asp-action="DeleteEmployee" asp-route-MovieId="@employeeDetails.ContactId">Delete</a></td>
+                    <td><a asp-controller="EmployeeDetails" asp-action="Detail" asp-route-MovieId="@employeeDetails.ContactId">Detail</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

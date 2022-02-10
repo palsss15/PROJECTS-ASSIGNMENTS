@@ -11,6 +11,7 @@ namespace JobPortalCore.Entity.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CandidateId { get; set; }
+
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string EmailId { get; set; }

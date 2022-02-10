@@ -1,88 +1,55 @@
-﻿@model JobPortalCore.Entity.Models.CandidateRegister
+﻿
 
-@{
-    ViewData["Title"] = "Register";
-}
+@model JobPortalCore.Entity.Models.CandidateRegister
 
-
-
-<h1>Candidate Register</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="Firstname" class="control-label"></label>
-                <input asp-for="Firstname" class="form-control" />
-                <span asp-validation-for="Firstname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lastname" class="control-label"></label>
-                <input asp-for="Lastname" class="form-control" />
-                <span asp-validation-for="Lastname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailId" class="control-label"></label>
-                <input asp-for="EmailId" class="form-control" />
-                <span asp-validation-for="EmailId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobNumber" class="control-label"></label>
-                <input asp-for="MobNumber" class="form-control" />
-                <span asp-validation-for="MobNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QualificationDeg" class="control-label"></label>
-                <input asp-for="QualificationDeg" class="form-control" />
-                <span asp-validation-for="QualificationDeg" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TechnicalSkills" class="control-label"></label>
-                <input asp-for="TechnicalSkills" class="form-control" />
-                <span asp-validation-for="TechnicalSkills" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Register" class="btn btn-primary" />
-            </div>
-
-
-            <!--<hr />
-            @if (ViewBag.status == "Ok")
-            {
-                <div class="alert alert-success">
-                    @ViewBag.message
-                </div>
-            }
-            else if (ViewBag.status == "Error")
-            {
-                <div class="alert alert-danger">
-                    @ViewBag.message
-                </div>
-            }
-            <hr />-->
-            @*<a asp-controller="CandidateRegister" asp-action="Login">Login</a>*@
-
-
-        <!--</form>-->
+<form method="post">
+    <div class="form-group">
+        <label for="Firstname">Firstname</label>
+        <input required placeholder="Firstname" type="text" class="form-control" asp-for="Firstname">
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <div class="form-group">
+        <label for="Firstname">Lastname</label>
+        <input required placeholder="Lastname" type="text" class="form-control" asp-for="Lastname">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">Email</label>
+        <input required placeholder="EmailId" type="text" class="form-control" asp-for="EmailId">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">MobNumber</label>
+        <input required placeholder="MobNumber" type="text" class="form-control" asp-for="MobNumber">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">QualificationDeg</label>
+        <input required placeholder="QualificationDeg" type="text" class="form-control" asp-for="QualificationDeg">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">TechnicalSkills</label>
+        <input required placeholder="TechnicalSkills" type="text" class="form-control" asp-for="TechnicalSkills">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">Password</label>
+        <input type ="password" required placeholder="Password"  class="form-control" asp-for="Password">
+    </div>
+    <div class="form-group">
+        <label for="Firstname">ConfirmPassword</label>
+        <input type ="password" required placeholder="ConfirmPassword" class="form-control" asp-for="ConfirmPassword">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Register">
+    <button type="button" class="btn btn-secondary">Reset</button>
+    <hr />
+    @if (ViewBag.status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else if (ViewBag.status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+    <hr />
+    <a asp-controller="CandidateRegister" asp-action="Login">Login</a>
+</form>

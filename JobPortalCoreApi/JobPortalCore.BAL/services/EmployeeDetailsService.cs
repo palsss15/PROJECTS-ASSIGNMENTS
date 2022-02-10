@@ -46,6 +46,30 @@ namespace JobPortalCore.BAL.services
             return _employeeDetailsRepository.Login(employee);
         }
 
+
+        public void AddEmployee(EmployeeDetails employee)
+        {
+            _employeeDetailsRepository.AddEmployee(employee);
+        }
+
+        public void UpdateEmployee(EmployeeDetails employee)
+        {
+            _employeeDetailsRepository.UpdateEmployee(employee);
+        }
+
+        public void DeleteEmployees(int contactId)
+        {
+            _employeeDetailsRepository.DeleteEmployees(contactId);
+        }
         
+        public EmployeeDetails GetJobByid(int contactId)
+        {
+            return _employeeDetailsRepository.GetEmployeeDetailsByID(contactId);
+        }
+
+        public IEnumerable<EmployeeDetails> GetEmployeeDetails()
+        {
+            return _employeeDetailsRepository.GetEmployeeDetails();
+        }
     }
 }

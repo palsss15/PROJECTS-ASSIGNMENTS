@@ -14,27 +14,27 @@ namespace JobPortalCore.BAL.services
             _jobRepository = jobRepository;
         }
 
-        //add movie
+       
         public void AddJob(JobDetails job)
         {
             _jobRepository.AddJob(job);
         }
-        //update movie
+        
         public void UpdateJob(JobDetails job)
         {
             _jobRepository.UpdateJob(job);
         }
-        //delete movie
+       
         public void DeleteJob(int jobid)
         {
             _jobRepository.DeleteJob(jobid);
         }
-        //Get GetMovieByid
+    
         public JobDetails GetJobByid(int jobid)
         {
           return  _jobRepository.GetJobById(jobid);
         }
-        //Get GetMovies
+     
         public IEnumerable<JobDetails> GetJobs()
         {
            return _jobRepository.GetJobs();

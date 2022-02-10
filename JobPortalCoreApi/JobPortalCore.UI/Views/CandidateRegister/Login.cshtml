@@ -1,38 +1,33 @@
-﻿@model JobPortalCore.Entity.Models.CandidateLogin
+﻿
+@model JobPortalCore.Entity.Models.CandidateRegister
 
-@{
-    ViewData["Title"] = "Login";
-}
-
-
-
-<h1>Candidate Login</h1>
+<h2>Login</h2>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmailId" class="control-label"></label>
-                <input asp-for="EmailId" class="form-control" />
-                <span asp-validation-for="EmailId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Login" class="btn btn-primary" />
-            </div>
-        </form>
+<form method="post">
+    
+    <div class="form-group">
+        <label for="Firstname">EmailId</label>
+        <input required placeholder="EmailId" type="text" class="form-control" asp-for="EmailId">
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    <div class="form-group">
+        <label for="Firstname">Password</label>
+        <input type = "password" required placeholder="Password" class="form-control" asp-for="Password">
+    </div>
+    <input type="submit" class="btn btn-primary" value="Login">
+    <button type="button" class="btn btn-secondary">Reset</button>
+    <hr />
+    @if (ViewBag.status == "Ok")
+    {
+        <div class="alert alert-success">
+            @ViewBag.message
+        </div>
+    }
+    else if (ViewBag.status == "Error")
+    {
+        <div class="alert alert-danger">
+            @ViewBag.message
+        </div>
+    }
+    <hr />
+    <a asp-controller="CandidateRegister" asp-action="Register">Register</a>
+</form>

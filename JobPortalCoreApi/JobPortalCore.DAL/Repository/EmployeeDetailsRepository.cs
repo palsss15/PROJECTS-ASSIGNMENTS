@@ -65,6 +65,37 @@ namespace JobPortalCore.DAL.Repository
             _jobDbContext.Entry(candidateRegister).State = EntityState.Modified;
             _jobDbContext.SaveChanges();
         }
+
+        public void AddEmployee(EmployeeDetails employeeDetails)
+        {
+            _jobDbContext.employeeDetails.Add(employeeDetails);
+            _jobDbContext.SaveChanges();
+        }
+
+      
+
+        public void UpdateEmployee(EmployeeDetails employeeDetails)
+        {
+            _jobDbContext.Entry(employeeDetails).State = EntityState.Modified;
+            _jobDbContext.SaveChanges();
+        }
+
+        public EmployeeDetails GetEmployeeDetailsByID(int contactId)
+        {
+            return _jobDbContext.employeeDetails.Find(contactId);
+        }
+
+        public IEnumerable<EmployeeDetails> GetEmployeeDetails()
+        {
+            return _jobDbContext.employeeDetails.ToList();
+        }
+
+        public void DeleteEmployees(int contactId)
+        {
+            var employee = _jobDbContext.employeeDetails.Find(contactId);
+            _jobDbContext.employeeDetails.Remove(employee);
+            _jobDbContext.SaveChanges();
+        }
     }
 }
 

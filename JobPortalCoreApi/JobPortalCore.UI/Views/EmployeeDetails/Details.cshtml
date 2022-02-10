@@ -1,0 +1,36 @@
+﻿@model IEnumerable<JobPortalCore.Entity.Models.EmployeeDetails>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    @foreach (var employeeDetails in Model)
+    {
+
+
+        <tr>
+
+
+        <td>@employeeDetails.ContactId</td>
+        <td>@employeeDetails.EmpName</td>
+        <td>@employeeDetails.EmailId</td>
+        <td>@employeeDetails.ContactNum</td>
+        <td>@employeeDetails.Address</td>
+        <td>@employeeDetails.Location</td>
+        <td>@employeeDetails.Password</td>
+        <td>@employeeDetails.ConfirmPassword</td>
+        </tr>
+
+    }
+
+
+
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ContactId })*@ |
+    @Html.ActionLink("Back to List", "Index")
+</p>

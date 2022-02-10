@@ -24,6 +24,7 @@ namespace JobPortalCore.UI.Controllers
         }
         public IActionResult Register()
         {
+          
             return View();
         }
         [HttpPost]
@@ -38,6 +39,7 @@ namespace JobPortalCore.UI.Controllers
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
+                        
                         ViewBag.status = "Ok";
                         ViewBag.message = "Register successfully!";
                         return Redirect("Login");
@@ -62,7 +64,7 @@ namespace JobPortalCore.UI.Controllers
             using (HttpClient client = new HttpClient())
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(candidateRegister), Encoding.UTF8, "application/json");
-                string endPoint = _configuration["WebApiBaseUrl"] + "CandidateRegister/Login";
+                string endPoint = _configuration["WebApiBaseUrl"] + "Token/Login";
                 using (var response = await client.PostAsync(endPoint, content))
                 {
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)

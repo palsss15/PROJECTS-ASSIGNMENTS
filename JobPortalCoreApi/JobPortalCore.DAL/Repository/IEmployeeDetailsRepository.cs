@@ -11,8 +11,15 @@ namespace JobPortalCore.DAL.Repository
         void AddCandidateRegister(CandidateRegister candidateRegister);
         void UpdateCandidateRegister(CandidateRegister candidateRegister);
         void DeleteCandidateRegister(int CandidateId);
+        void AddEmployee(EmployeeDetails employeeDetails);
+        
+        void DeleteEmployees(int ContactId);
+        void UpdateEmployee(EmployeeDetails employeeDetails);
         CandidateRegister GetCandidateRegisterByID(int CandidateId);
+
+        EmployeeDetails GetEmployeeDetailsByID(int ContactId);
         IEnumerable<Entity.Models.CandidateRegister> GetCandidateRegister();
+        IEnumerable<Entity.Models.EmployeeDetails> GetEmployeeDetails();
         void Register(EmployeeDetails employeeDetails);
         EmployeeDetails Login(EmployeeDetails employee);
 
